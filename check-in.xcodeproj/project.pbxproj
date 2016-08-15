@@ -14,14 +14,14 @@
 		C90500221D5EA5360027DBAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90500201D5EA5360027DBAE /* Main.storyboard */; };
 		C90500241D5EA5360027DBAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90500231D5EA5360027DBAE /* Assets.xcassets */; };
 		C90500271D5EA5360027DBAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90500251D5EA5360027DBAE /* LaunchScreen.storyboard */; };
-		C91B0F991D5F808700E80A46 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B0F981D5F808700E80A46 /* Event.swift */; };
 		C91B0F9B1D5F8CAA00E80A46 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */; };
+		C936AD441D61807800602F5A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936AD421D61807800602F5A /* Event.swift */; };
+		C936AD451D61807800602F5A /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936AD431D61807800602F5A /* Member.swift */; };
 		C95401A11D5F673000F7AD65 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95401A01D5F673000F7AD65 /* SignupViewController.swift */; };
 		C977D2FD1D5EC18B000A7AE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */; };
 		C97D4D7D1D6005CC00204571 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D7C1D6005CC00204571 /* EventViewController.swift */; };
 		C97D4D7F1D602AA000204571 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D7E1D602AA000204571 /* ScannerViewController.swift */; };
 		C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D841D603AB100204571 /* ScannerTableViewController.swift */; };
-		C97D4D871D60C19100204571 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D861D60C19100204571 /* Member.swift */; };
 		C97D4D891D6159B600204571 /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D881D6159B600204571 /* DirectoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,15 +35,15 @@
 		C90500231D5EA5360027DBAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C90500261D5EA5360027DBAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C90500281D5EA5360027DBAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C91B0F981D5F808700E80A46 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = ../Event.swift; sourceTree = "<group>"; };
 		C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		C936AD421D61807800602F5A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		C936AD431D61807800602F5A /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		C95401A01D5F673000F7AD65 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C977D2FB1D5EBE2A000A7AE5 /* check-in-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "check-in-Bridging-Header.h"; sourceTree = "<group>"; };
 		C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C97D4D7C1D6005CC00204571 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		C97D4D7E1D602AA000204571 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C97D4D841D603AB100204571 /* ScannerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerTableViewController.swift; sourceTree = "<group>"; };
-		C97D4D861D60C19100204571 /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Member.swift; path = ../Member.swift; sourceTree = "<group>"; };
 		C97D4D881D6159B600204571 /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
 		EE428BBEF5628CA19D76493D /* Pods_check_in.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_check_in.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AD0229A6A168A8DDA1880B /* Pods-check-in.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,8 +90,8 @@
 		C90500191D5EA5360027DBAE /* check-in */ = {
 			isa = PBXGroup;
 			children = (
-				C91B0F981D5F808700E80A46 /* Event.swift */,
-				C97D4D861D60C19100204571 /* Member.swift */,
+				C936AD421D61807800602F5A /* Event.swift */,
+				C936AD431D61807800602F5A /* Member.swift */,
 				C905001A1D5EA5360027DBAE /* AppDelegate.swift */,
 				C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */,
 				C97D4D7C1D6005CC00204571 /* EventViewController.swift */,
@@ -246,15 +246,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95401A11D5F673000F7AD65 /* SignupViewController.swift in Sources */,
+				C936AD441D61807800602F5A /* Event.swift in Sources */,
 				C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */,
 				C91B0F9B1D5F8CAA00E80A46 /* AddEventViewController.swift in Sources */,
 				C905001F1D5EA5360027DBAE /* SettingsViewController.swift in Sources */,
 				C905001B1D5EA5360027DBAE /* AppDelegate.swift in Sources */,
 				C97D4D7D1D6005CC00204571 /* EventViewController.swift in Sources */,
-				C97D4D871D60C19100204571 /* Member.swift in Sources */,
+				C936AD451D61807800602F5A /* Member.swift in Sources */,
 				C977D2FD1D5EC18B000A7AE5 /* LoginViewController.swift in Sources */,
 				C97D4D891D6159B600204571 /* DirectoryViewController.swift in Sources */,
-				C91B0F991D5F808700E80A46 /* Event.swift in Sources */,
 				C905001D1D5EA5360027DBAE /* EventsViewController.swift in Sources */,
 				C97D4D7F1D602AA000204571 /* ScannerViewController.swift in Sources */,
 			);

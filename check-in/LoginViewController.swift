@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
     
+    var transition = ElasticTransition()
+    
     /* -------------------------------------------------------- */
     
     let opaqueColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
@@ -42,6 +44,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControll
         setUpTextField(imageNamed: "user.png", placeholder: "Username", textfield: usernameField)
         setUpTextField(imageNamed: "lock.png", placeholder: "Password", textfield: passwordField)
         
+        usernameField.rightViewMode = .always
+        usernameWheel.frame = CGRect(x: 0, y: 0, width: usernameField.frame.height, height: usernameField.frame.height)
+        usernameField.rightView = usernameWheel
+        
+        passwordField.rightViewMode = .always
+        passwordWheel.frame = CGRect(x: 0, y: 0, width: passwordField.frame.height, height: passwordField.frame.height)
+        passwordField.rightView = passwordWheel
+        
         // Set up login button
         loginButton.layer.borderColor = opaqueColor.cgColor
         loginButton.layer.cornerRadius = 6
@@ -56,6 +66,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControll
         layer.frame = CGRect(x: 0, y: self.view.frame.height - (self.view.frame.height - signUpButton.frame.minY) - 10, width: self.view.frame.width, height: 1.0)
         layer.backgroundColor = opaqueColor.cgColor
         self.view.layer.addSublayer(layer)
+        
+        // customization of transition
+        transition.transformType = .translatePush
+        transition.edge = .right
+        transition.sticky = false
+        transition.stiffness = 0.1
         
         print("Login loaded")
     }
@@ -80,9 +96,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControll
                     //hide log-in view and show main app content
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                     let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-                    tabBarController.modalTransitionStyle = .flipHorizontal
+                    tabBarController.modalPresentationStyle = .custom
+                    self.transition.startingPoint = sender.center
+                    tabBarController.transitioningDelegate = self.transition
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.window?.rootViewController?.present(tabBarController, animated: true, completion: nil)
+                    
                 } else {
                     //there was an error with the update save
                     let code = (KCSUserCompletionBlock.1 as! NSError).code
@@ -133,7 +152,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControll
     @IBAction func sendToSignUp(_ sender: AnyObject) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController
-        viewController.modalTransitionStyle = .coverVertical
+        //viewController.modalTransitionStyle = .coverVertical
+        //viewController.modalTransition.edge = .left
+        //viewController.transitioningDelegate = transition
         self.present(viewController, animated: true, completion: nil)
     }
     

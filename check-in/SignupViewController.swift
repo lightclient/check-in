@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: ElasticModalViewController, UITextFieldDelegate {
     
     /* -------------------------------------------------------- */
     

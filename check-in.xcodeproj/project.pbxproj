@@ -18,6 +18,22 @@
 		C936AD441D61807800602F5A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936AD421D61807800602F5A /* Event.swift */; };
 		C936AD451D61807800602F5A /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936AD431D61807800602F5A /* Member.swift */; };
 		C949ED101D62A6BE0002E7CD /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949ED0F1D62A6BE0002E7CD /* Validator.swift */; };
+		C952DCB71D636CFC005D1750 /* EdgePanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCB11D636CFC005D1750 /* EdgePanTransition.swift */; };
+		C952DCB81D636CFC005D1750 /* ElasticShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCB21D636CFC005D1750 /* ElasticShapeLayer.swift */; };
+		C952DCB91D636CFC005D1750 /* ElasticTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCB31D636CFC005D1750 /* ElasticTransition.swift */; };
+		C952DCBA1D636CFC005D1750 /* ElasticTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCB41D636CFC005D1750 /* ElasticTransitionPresentationController.swift */; };
+		C952DCBC1D636CFC005D1750 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCB61D636CFC005D1750 /* Util.swift */; };
+		C952DCC51D636D0A005D1750 /* MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCBE1D636D0A005D1750 /* MotionAnimation.swift */; };
+		C952DCC61D636D0A005D1750 /* MotionAnimationPropertyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCBF1D636D0A005D1750 /* MotionAnimationPropertyState.swift */; };
+		C952DCC71D636D0A005D1750 /* MotionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCC01D636D0A005D1750 /* MotionAnimator.swift */; };
+		C952DCC81D636D0A005D1750 /* NSObject+MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCC11D636D0A005D1750 /* NSObject+MotionAnimation.swift */; };
+		C952DCC91D636D0A005D1750 /* SpringValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCC21D636D0A005D1750 /* SpringValueAnimation.swift */; };
+		C952DCCA1D636D0A005D1750 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCC31D636D0A005D1750 /* Types.swift */; };
+		C952DCCB1D636D0A005D1750 /* ValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCC41D636D0A005D1750 /* ValueAnimation.swift */; };
+		C952DCCD1D636DF5005D1750 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCCC1D636DF5005D1750 /* DashboardViewController.swift */; };
+		C952DCCF1D637040005D1750 /* ElasticModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCCE1D637040005D1750 /* ElasticModalViewController.swift */; };
+		C952DCD11D637552005D1750 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCD01D637552005D1750 /* TabBarViewController.swift */; };
+		C952DCD71D63C01B005D1750 /* DashboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */; };
 		C95401A11D5F673000F7AD65 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95401A01D5F673000F7AD65 /* SignupViewController.swift */; };
 		C977D2FD1D5EC18B000A7AE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */; };
 		C97D4D7D1D6005CC00204571 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D7C1D6005CC00204571 /* EventViewController.swift */; };
@@ -40,6 +56,22 @@
 		C936AD421D61807800602F5A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C936AD431D61807800602F5A /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		C949ED0F1D62A6BE0002E7CD /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = ../Validator.swift; sourceTree = "<group>"; };
+		C952DCB11D636CFC005D1750 /* EdgePanTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EdgePanTransition.swift; path = ElasticTransition/EdgePanTransition.swift; sourceTree = "<group>"; };
+		C952DCB21D636CFC005D1750 /* ElasticShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElasticShapeLayer.swift; path = ElasticTransition/ElasticShapeLayer.swift; sourceTree = "<group>"; };
+		C952DCB31D636CFC005D1750 /* ElasticTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElasticTransition.swift; path = ElasticTransition/ElasticTransition.swift; sourceTree = "<group>"; };
+		C952DCB41D636CFC005D1750 /* ElasticTransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ElasticTransitionPresentationController.swift; path = ElasticTransition/ElasticTransitionPresentationController.swift; sourceTree = "<group>"; };
+		C952DCB61D636CFC005D1750 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ElasticTransition/Util.swift; sourceTree = "<group>"; };
+		C952DCBE1D636D0A005D1750 /* MotionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotionAnimation.swift; path = ElasticTransition/MotionAnimation/MotionAnimation.swift; sourceTree = "<group>"; };
+		C952DCBF1D636D0A005D1750 /* MotionAnimationPropertyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotionAnimationPropertyState.swift; path = ElasticTransition/MotionAnimation/MotionAnimationPropertyState.swift; sourceTree = "<group>"; };
+		C952DCC01D636D0A005D1750 /* MotionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotionAnimator.swift; path = ElasticTransition/MotionAnimation/MotionAnimator.swift; sourceTree = "<group>"; };
+		C952DCC11D636D0A005D1750 /* NSObject+MotionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+MotionAnimation.swift"; path = "ElasticTransition/MotionAnimation/NSObject+MotionAnimation.swift"; sourceTree = "<group>"; };
+		C952DCC21D636D0A005D1750 /* SpringValueAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringValueAnimation.swift; path = ElasticTransition/MotionAnimation/SpringValueAnimation.swift; sourceTree = "<group>"; };
+		C952DCC31D636D0A005D1750 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Types.swift; path = ElasticTransition/MotionAnimation/Types.swift; sourceTree = "<group>"; };
+		C952DCC41D636D0A005D1750 /* ValueAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValueAnimation.swift; path = ElasticTransition/MotionAnimation/ValueAnimation.swift; sourceTree = "<group>"; };
+		C952DCCC1D636DF5005D1750 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		C952DCCE1D637040005D1750 /* ElasticModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticModalViewController.swift; sourceTree = "<group>"; };
+		C952DCD01D637552005D1750 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPageViewController.swift; sourceTree = "<group>"; };
 		C95401A01D5F673000F7AD65 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C977D2FB1D5EBE2A000A7AE5 /* check-in-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "check-in-Bridging-Header.h"; sourceTree = "<group>"; };
 		C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -92,16 +124,20 @@
 		C90500191D5EA5360027DBAE /* check-in */ = {
 			isa = PBXGroup;
 			children = (
+				C952DCB01D636CF1005D1750 /* ElasticTransition */,
 				C936AD421D61807800602F5A /* Event.swift */,
 				C936AD431D61807800602F5A /* Member.swift */,
 				C905001A1D5EA5360027DBAE /* AppDelegate.swift */,
 				C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */,
 				C97D4D7C1D6005CC00204571 /* EventViewController.swift */,
 				C905001C1D5EA5360027DBAE /* EventsViewController.swift */,
+				C952DCCC1D636DF5005D1750 /* DashboardViewController.swift */,
+				C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */,
 				C97D4D881D6159B600204571 /* DirectoryViewController.swift */,
 				C97D4D7E1D602AA000204571 /* ScannerViewController.swift */,
 				C97D4D841D603AB100204571 /* ScannerTableViewController.swift */,
 				C905001E1D5EA5360027DBAE /* SettingsViewController.swift */,
+				C952DCD01D637552005D1750 /* TabBarViewController.swift */,
 				C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */,
 				C95401A01D5F673000F7AD65 /* SignupViewController.swift */,
 				C949ED0F1D62A6BE0002E7CD /* Validator.swift */,
@@ -112,6 +148,34 @@
 				C977D2FB1D5EBE2A000A7AE5 /* check-in-Bridging-Header.h */,
 			);
 			path = "check-in";
+			sourceTree = "<group>";
+		};
+		C952DCB01D636CF1005D1750 /* ElasticTransition */ = {
+			isa = PBXGroup;
+			children = (
+				C952DCCE1D637040005D1750 /* ElasticModalViewController.swift */,
+				C952DCBD1D636CFE005D1750 /* MotionAnimation */,
+				C952DCB11D636CFC005D1750 /* EdgePanTransition.swift */,
+				C952DCB21D636CFC005D1750 /* ElasticShapeLayer.swift */,
+				C952DCB31D636CFC005D1750 /* ElasticTransition.swift */,
+				C952DCB41D636CFC005D1750 /* ElasticTransitionPresentationController.swift */,
+				C952DCB61D636CFC005D1750 /* Util.swift */,
+			);
+			name = ElasticTransition;
+			sourceTree = "<group>";
+		};
+		C952DCBD1D636CFE005D1750 /* MotionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				C952DCBE1D636D0A005D1750 /* MotionAnimation.swift */,
+				C952DCBF1D636D0A005D1750 /* MotionAnimationPropertyState.swift */,
+				C952DCC01D636D0A005D1750 /* MotionAnimator.swift */,
+				C952DCC11D636D0A005D1750 /* NSObject+MotionAnimation.swift */,
+				C952DCC21D636D0A005D1750 /* SpringValueAnimation.swift */,
+				C952DCC31D636D0A005D1750 /* Types.swift */,
+				C952DCC41D636D0A005D1750 /* ValueAnimation.swift */,
+			);
+			name = MotionAnimation;
 			sourceTree = "<group>";
 		};
 		FDD3507CE03A4B4B8D33A1C4 /* Pods */ = {
@@ -250,15 +314,31 @@
 			files = (
 				C95401A11D5F673000F7AD65 /* SignupViewController.swift in Sources */,
 				C936AD441D61807800602F5A /* Event.swift in Sources */,
+				C952DCB91D636CFC005D1750 /* ElasticTransition.swift in Sources */,
 				C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */,
+				C952DCD11D637552005D1750 /* TabBarViewController.swift in Sources */,
+				C952DCD71D63C01B005D1750 /* DashboardPageViewController.swift in Sources */,
+				C952DCC91D636D0A005D1750 /* SpringValueAnimation.swift in Sources */,
 				C91B0F9B1D5F8CAA00E80A46 /* AddEventViewController.swift in Sources */,
+				C952DCC71D636D0A005D1750 /* MotionAnimator.swift in Sources */,
+				C952DCCD1D636DF5005D1750 /* DashboardViewController.swift in Sources */,
+				C952DCCA1D636D0A005D1750 /* Types.swift in Sources */,
 				C949ED101D62A6BE0002E7CD /* Validator.swift in Sources */,
+				C952DCCB1D636D0A005D1750 /* ValueAnimation.swift in Sources */,
 				C905001F1D5EA5360027DBAE /* SettingsViewController.swift in Sources */,
+				C952DCBA1D636CFC005D1750 /* ElasticTransitionPresentationController.swift in Sources */,
+				C952DCC81D636D0A005D1750 /* NSObject+MotionAnimation.swift in Sources */,
 				C905001B1D5EA5360027DBAE /* AppDelegate.swift in Sources */,
+				C952DCC51D636D0A005D1750 /* MotionAnimation.swift in Sources */,
 				C97D4D7D1D6005CC00204571 /* EventViewController.swift in Sources */,
 				C936AD451D61807800602F5A /* Member.swift in Sources */,
+				C952DCBC1D636CFC005D1750 /* Util.swift in Sources */,
+				C952DCB71D636CFC005D1750 /* EdgePanTransition.swift in Sources */,
+				C952DCCF1D637040005D1750 /* ElasticModalViewController.swift in Sources */,
 				C977D2FD1D5EC18B000A7AE5 /* LoginViewController.swift in Sources */,
 				C97D4D891D6159B600204571 /* DirectoryViewController.swift in Sources */,
+				C952DCC61D636D0A005D1750 /* MotionAnimationPropertyState.swift in Sources */,
+				C952DCB81D636CFC005D1750 /* ElasticShapeLayer.swift in Sources */,
 				C905001D1D5EA5360027DBAE /* EventsViewController.swift in Sources */,
 				C97D4D7F1D602AA000204571 /* ScannerViewController.swift in Sources */,
 			);

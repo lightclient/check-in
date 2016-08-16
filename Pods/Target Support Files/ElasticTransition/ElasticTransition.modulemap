@@ -1,6 +1,0 @@
-framework module ElasticTransition {
-  umbrella header "ElasticTransition-umbrella.h"
-
-  export *
-  module * { export * }
-}

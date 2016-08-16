@@ -111,12 +111,12 @@ class DirectoryViewController: UITableViewController {
             // Get the new view controller using segue.destinationViewController.
             // Pass the selected object to the new view controller.
             
-            if let selectedEventCell = sender as? UITableViewCell {
+            //if let selectedEventCell = sender as? UITableViewCell {
                 //let eventViewController = segue.destination as! EventViewController
                 //let indexPath = tableView.indexPath(for: selectedEventCell)!
                 //let selectedEvent = events[(indexPath.row)]
                 //eventViewController.event = selectedEvent
-            }
+            //}
         }
     
         func loadDataFromRefresh() {

@@ -17,6 +17,7 @@
 		C91B0F9B1D5F8CAA00E80A46 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */; };
 		C936AD441D61807800602F5A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936AD421D61807800602F5A /* Event.swift */; };
 		C936AD451D61807800602F5A /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936AD431D61807800602F5A /* Member.swift */; };
+		C949ED101D62A6BE0002E7CD /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949ED0F1D62A6BE0002E7CD /* Validator.swift */; };
 		C95401A11D5F673000F7AD65 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95401A01D5F673000F7AD65 /* SignupViewController.swift */; };
 		C977D2FD1D5EC18B000A7AE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */; };
 		C97D4D7D1D6005CC00204571 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D7C1D6005CC00204571 /* EventViewController.swift */; };
@@ -38,6 +39,7 @@
 		C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C936AD421D61807800602F5A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C936AD431D61807800602F5A /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		C949ED0F1D62A6BE0002E7CD /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = ../Validator.swift; sourceTree = "<group>"; };
 		C95401A01D5F673000F7AD65 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C977D2FB1D5EBE2A000A7AE5 /* check-in-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "check-in-Bridging-Header.h"; sourceTree = "<group>"; };
 		C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				C905001E1D5EA5360027DBAE /* SettingsViewController.swift */,
 				C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */,
 				C95401A01D5F673000F7AD65 /* SignupViewController.swift */,
+				C949ED0F1D62A6BE0002E7CD /* Validator.swift */,
 				C90500201D5EA5360027DBAE /* Main.storyboard */,
 				C90500231D5EA5360027DBAE /* Assets.xcassets */,
 				C90500251D5EA5360027DBAE /* LaunchScreen.storyboard */,
@@ -249,6 +252,7 @@
 				C936AD441D61807800602F5A /* Event.swift in Sources */,
 				C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */,
 				C91B0F9B1D5F8CAA00E80A46 /* AddEventViewController.swift in Sources */,
+				C949ED101D62A6BE0002E7CD /* Validator.swift in Sources */,
 				C905001F1D5EA5360027DBAE /* SettingsViewController.swift in Sources */,
 				C905001B1D5EA5360027DBAE /* AppDelegate.swift in Sources */,
 				C97D4D7D1D6005CC00204571 /* EventViewController.swift in Sources */,

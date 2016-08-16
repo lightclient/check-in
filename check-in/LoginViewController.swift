@@ -8,7 +8,9 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
+    
+    /* -------------------------------------------------------- */
     
     let opaqueColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.2)
     
@@ -21,80 +23,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
+    /* -------------------------------------------------------- */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let padding : CGFloat = 25
-        let radius : CGFloat = 6
+        // Load the pretty gradient
+        loadBackgroundGradient()
         
+        // Create target to be called when the text fields are changed (to determine if the input is valid)
         usernameField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         
         usernameField.delegate = self
         passwordField.delegate = self
         
-        usernameField.leftViewMode = UITextFieldViewMode.always
-        let user = UIImage(named: "user.png")
+        // Make the text fields look pretty
+        setUpTextField(imageNamed: "user.png", placeholder: "Username", textfield: usernameField)
+        setUpTextField(imageNamed: "lock.png", placeholder: "Password", textfield: passwordField)
         
-        if let user = user {
-            let userImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: user.size.width + padding, height: user.size.height))
-            userImageView.image = user
-            userImageView.contentMode = .scaleAspectFit
-            usernameField.leftView = userImageView
-            
-        }
-        
-        usernameField.rightViewMode = .always
-        usernameWheel.frame = CGRect(x: 0, y: 0, width: usernameField.frame.height, height: usernameField.frame.height)
-        usernameField.rightView = usernameWheel
-        
-        usernameField.borderStyle = .roundedRect
-        usernameField.layer.cornerRadius = radius
-        usernameField.backgroundColor = opaqueColor
-        usernameField.textColor = .white
-        usernameField.attributedPlaceholder = NSAttributedString(string:"Username", attributes: [NSForegroundColorAttributeName: opaqueColor])
-        
-        usernameField.enablesReturnKeyAutomatically = true
-        
-        usernameField.tintColor = .white
-        
-        passwordField.leftViewMode = UITextFieldViewMode.always
-        let lock = UIImage(named: "lock.png")
-        
-        if let lock = lock {
-            let lockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: lock.size.width + padding, height: lock.size.height))
-            lockImageView.image = lock
-            lockImageView.contentMode = .scaleAspectFit
-            passwordField.leftView = lockImageView
-            
-        }
-        
-        passwordField.rightViewMode = .always
-        passwordWheel.frame = CGRect(x: 0, y: 0, width: passwordField.frame.height, height: passwordField.frame.height)
-        passwordField.rightView = passwordWheel
-        
-        passwordField.borderStyle = .roundedRect
-        passwordField.layer.cornerRadius = radius
-        passwordField.backgroundColor = opaqueColor
-        passwordField.textColor = .white
-        passwordField.attributedPlaceholder = NSAttributedString(string:"Password", attributes: [NSForegroundColorAttributeName: opaqueColor])
-        
-        passwordField.enablesReturnKeyAutomatically = true
-        
-        passwordField.tintColor = .white
-        
+        // Set up login button
         loginButton.layer.borderColor = opaqueColor.cgColor
-        loginButton.layer.cornerRadius = radius
+        loginButton.layer.cornerRadius = 6
         loginButton.layer.borderWidth = 1
         loginButton.backgroundColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.0)
         loginButton.setTitleColor(opaqueColor, for: .normal)
         loginButton.setTitleColor(opaqueColor, for: .highlighted)
         loginButton.isEnabled = false
         
+        // Add cutline above signup button
         let layer = CALayer()
         layer.frame = CGRect(x: 0, y: self.view.frame.height - (self.view.frame.height - signUpButton.frame.minY) - 10, width: self.view.frame.width, height: 1.0)
         layer.backgroundColor = opaqueColor.cgColor
@@ -103,17 +60,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         print("Login loaded")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadBackground()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    // Called when its time to start login
     @IBAction func initiateLogin(_ sender: AnyObject) {
         
+        // Begin animating activity wheels to avoid laggy appearance
         usernameWheel.startAnimating()
         passwordWheel.startAnimating()
         
@@ -135,27 +85,59 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     appDelegate.window?.rootViewController?.present(tabBarController, animated: true, completion: nil)
                 } else {
                     //there was an error with the update save
-                    let message = KCSUserCompletionBlock.1?.localizedDescription
-                    let alert = UIAlertController(title: NSLocalizedString("Login failed", comment: "Sign account failed"), message: message, preferredStyle: UIAlertControllerStyle.alert)
-                    let cancelAction = UIAlertAction(title: "Okay", style: .default, handler: {(action) -> Void in
-                        print("Okay...")
-                    })
+                    let code = (KCSUserCompletionBlock.1 as! NSError).code
+                    print(code)
                     
-                    alert.addAction(cancelAction)
-                    self.present(alert, animated: true, completion: nil)
+                    //todo: add other error codes
+                    
+                    switch(code) {
+                    // incorrect credentials
+                    case 401:
+                        self.animateTextFieldError(textfield: self.usernameField)
+                        self.animateTextFieldError(textfield: self.passwordField)
+                        break
+                    default:
+                        break
+                    }
                 }
             }
         )
-        
-
     }
-    
+
+    // Make the textfield wiggle back and forth & become outlined in red
+    func animateTextFieldError(textfield: UITextField) {
+        
+        textfield.layer.borderWidth = 1
+        
+        let c = CABasicAnimation(keyPath: "borderColor")
+        c.fromValue = textfield.layer.borderColor
+        c.toValue = UIColor.red.cgColor
+        c.duration = 0.2
+        c.repeatCount = 0
+        c.isRemovedOnCompletion = false
+        c.fillMode = kCAFillModeForwards
+        textfield.layer.borderWidth = 1
+        textfield.layer.add(c, forKey: "borderColor")
+        
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.1
+        animation.repeatCount = 3
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textfield.center.x - 10, y: textfield.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textfield.center.x + 10, y: textfield.center.y))
+        textfield.layer.add(animation, forKey: "position")
+        
+    }
+
+    // Present the sign up view
     @IBAction func sendToSignUp(_ sender: AnyObject) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SignupViewController") as! SignupViewController
+        viewController.modalTransitionStyle = .coverVertical
         self.present(viewController, animated: true, completion: nil)
     }
     
+    // Move the UI up if we're about to begin editing
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         UIView.animate(withDuration: 0.3, animations: {
             self.usernameField.center = CGPoint(x: self.usernameField.center.x, y: self.usernameField.center.y - self.view.frame.height / 7)
@@ -167,6 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // Move the UI back down if we're done editing
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         UIView.animate(withDuration: 0.3, animations: {
             self.usernameField.center = CGPoint(x: self.usernameField.center.x, y: self.usernameField.center.y + self.view.frame.height / 7)
@@ -178,6 +161,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // Determine what to do when the return button is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.returnKeyType == .next {
             passwordField.becomeFirstResponder()
@@ -190,6 +174,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // Determine if we can submit the username and password fields & enable the login button if we can
     func textFieldDidChange() {
         if usernameField.text?.characters.count != 0 && passwordField.text?.characters.count != 0 {
             loginButton.setTitleColor(.white, for: .normal)
@@ -200,12 +185,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Make the keyboard disappear if we touch away from the keyboard or a textfield
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
     
-    func loadBackground() {
+    // Make the textfields look pretty
+    func setUpTextField(imageNamed: String, placeholder: String, textfield: UITextField) {
+        
+        let padding : CGFloat = 25
+        let radius : CGFloat = 6
+        
+        textfield.leftViewMode = UITextFieldViewMode.always
+        let image = UIImage(named: imageNamed)
+        
+        if let image = image {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: image.size.width + padding, height: image.size.height))
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            textfield.leftView = imageView
+            
+        }
+        
+        textfield.borderStyle = .roundedRect
+        textfield.layer.cornerRadius = radius
+        textfield.backgroundColor = opaqueColor
+        textfield.textColor = .white
+        textfield.attributedPlaceholder = NSAttributedString(string:placeholder, attributes: [NSForegroundColorAttributeName: opaqueColor])
+        
+        textfield.enablesReturnKeyAutomatically = true
+        
+        textfield.tintColor = .white
+    }
+    
+    // Make the backgroud look pretty
+    func loadBackgroundGradient() {
         let gradient: CAGradientLayer = CAGradientLayer()
         
         gradient.colors = [UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0).cgColor, UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0).cgColor]
@@ -215,6 +230,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
         self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 }
 

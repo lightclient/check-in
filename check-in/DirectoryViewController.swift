@@ -75,20 +75,29 @@ class DirectoryViewController: UITableViewController {
                 
                 let memberToDelete = members[indexPath.row]
                 members.remove(at: indexPath.row)
-                _ = store?.remove(memberToDelete, withDeletionBlock: { (deletionDictorNil, error) in
-                    if error != nil {
-                        //error occurred - add back into the list
-                        self.members.insert(memberToDelete, at: indexPath.row)
-                        tableView.insertRows(
-                            at: [indexPath],
-                            with: UITableViewRowAnimation.automatic
-                        )
-                        //NSLog("Delete failed, with error: %@", error)
-                    } else {
-                        //delete successful - UI already updated
-                        //NSLog("deleted response: %@", deletionDictorNil)
+                
+                if let event = event {
+                    event.removeAttendee(entityId: memberToDelete.entityId!)
+                    event.save {
+                        self.refresh.beginRefreshingManually()
                     }
-                    }, withProgressBlock: nil)
+                } else {
+                    _ = store?.remove(memberToDelete, withDeletionBlock: { (deletionDictorNil, error) in
+                        if error != nil {
+                            //error occurred - add back into the list
+                            self.members.insert(memberToDelete, at: indexPath.row)
+                            tableView.insertRows(
+                                at: [indexPath],
+                                with: UITableViewRowAnimation.automatic
+                            )
+                            //NSLog("Delete failed, with error: %@", error)
+                        } else {
+                            //delete successful - UI already updated
+                            //NSLog("deleted response: %@", deletionDictorNil)
+                        }
+                        }, withProgressBlock: nil)
+                }
+
                 
                 
                 tableView.deleteRows(at: [indexPath], with: .fade)

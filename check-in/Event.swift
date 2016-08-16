@@ -107,6 +107,12 @@ class Event : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPe
         }
     }
     
+    func removeAttendee(entityId: String) {
+        if let i = attendees.index(of: entityId) {
+            attendees.remove(at: i)
+        }
+    }
+    
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
             "entityId" : KCSEntityKeyId, //the required _id field

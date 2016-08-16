@@ -7,5 +7,4 @@ target 'check-in' do
 
   # Pods for check-in
   pod 'KinveyKit'
-  pod 'ElasticTransition', '~> 3.0.0'
 end

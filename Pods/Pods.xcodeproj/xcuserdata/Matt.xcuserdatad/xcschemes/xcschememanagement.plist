@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ElasticTransition.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MotionAnimation.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-check-in.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16367A881268B61F62AEF0CC6C0FCF56</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7CAAB4AEB098D0E3D8522D5B093FB6E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F28D60B0CC50AC866DDCE4811140455A</key>
+		<key>C4E2BF19F4B3D09B2DA6CEB269E080A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

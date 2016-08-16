@@ -47,8 +47,8 @@
 		C97D4D7E1D602AA000204571 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C97D4D841D603AB100204571 /* ScannerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerTableViewController.swift; sourceTree = "<group>"; };
 		C97D4D881D6159B600204571 /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
+		DA66A4E1E1E5DF35B7B7C87A /* Pods-check-in.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.debug.xcconfig"; sourceTree = "<group>"; };
 		EE428BBEF5628CA19D76493D /* Pods_check_in.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_check_in.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5AD0229A6A168A8DDA1880B /* Pods-check-in.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +117,8 @@
 		FDD3507CE03A4B4B8D33A1C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F5AD0229A6A168A8DDA1880B /* Pods-check-in.debug.xcconfig */,
 				8E70218A5AB2713E224215E1 /* Pods-check-in.release.xcconfig */,
+				DA66A4E1E1E5DF35B7B7C87A /* Pods-check-in.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -381,8 +381,9 @@
 		};
 		C905002C1D5EA5360027DBAE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5AD0229A6A168A8DDA1880B /* Pods-check-in.debug.xcconfig */;
+			baseConfigurationReference = DA66A4E1E1E5DF35B7B7C87A /* Pods-check-in.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "check-in/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -397,6 +398,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8E70218A5AB2713E224215E1 /* Pods-check-in.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "check-in/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

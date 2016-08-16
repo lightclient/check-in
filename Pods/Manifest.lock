@@ -1,18 +1,12 @@
 PODS:
-  - ElasticTransition (3.0.1):
-    - MotionAnimation (~> 0.1.1)
   - KinveyKit (1.40.8)
-  - MotionAnimation (0.1.1)
 
 DEPENDENCIES:
-  - ElasticTransition (~> 3.0.0)
   - KinveyKit
 
 SPEC CHECKSUMS:
-  ElasticTransition: 231e60fa66f68f42129e7969736f4a9e69794f97
   KinveyKit: 9546f4fe4d4de11634470faf5d1fb69af244008e
-  MotionAnimation: ff356cfdbedcab52a5bfc94cc96ed44ea2f652e0
 
-PODFILE CHECKSUM: fc2897cfbbfd2fde8c46c8f67fdd4191f1573966
+PODFILE CHECKSUM: 90b4a96d185d11c04e49a64d6e6bcb345231082c
 
 COCOAPODS: 1.0.1

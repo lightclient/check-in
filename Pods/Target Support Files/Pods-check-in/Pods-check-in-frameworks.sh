@@ -82,12 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ElasticTransition/ElasticTransition.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MotionAnimation/MotionAnimation.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ElasticTransition/ElasticTransition.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MotionAnimation/MotionAnimation.framework"
-fi

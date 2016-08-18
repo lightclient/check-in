@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A75A8ED69F6255A8535172F /* Pods_check_in.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE428BBEF5628CA19D76493D /* Pods_check_in.framework */; };
+		C904DEEF1D63E35F00BAF1F4 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */; };
 		C905001B1D5EA5360027DBAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905001A1D5EA5360027DBAE /* AppDelegate.swift */; };
 		C905001D1D5EA5360027DBAE /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905001C1D5EA5360027DBAE /* EventsViewController.swift */; };
 		C905001F1D5EA5360027DBAE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905001E1D5EA5360027DBAE /* SettingsViewController.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		8E70218A5AB2713E224215E1 /* Pods-check-in.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.release.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.release.xcconfig"; sourceTree = "<group>"; };
+		C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
 		C90500171D5EA5360027DBAE /* check-in.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "check-in.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C905001A1D5EA5360027DBAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C905001C1D5EA5360027DBAE /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */,
 				C97D4D7C1D6005CC00204571 /* EventViewController.swift */,
 				C905001C1D5EA5360027DBAE /* EventsViewController.swift */,
+				C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */,
 				C952DCCC1D636DF5005D1750 /* DashboardViewController.swift */,
 				C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */,
 				C97D4D881D6159B600204571 /* DirectoryViewController.swift */,
@@ -322,6 +325,7 @@
 				C91B0F9B1D5F8CAA00E80A46 /* AddEventViewController.swift in Sources */,
 				C952DCC71D636D0A005D1750 /* MotionAnimator.swift in Sources */,
 				C952DCCD1D636DF5005D1750 /* DashboardViewController.swift in Sources */,
+				C904DEEF1D63E35F00BAF1F4 /* DashboardCell.swift in Sources */,
 				C952DCCA1D636D0A005D1750 /* Types.swift in Sources */,
 				C949ED101D62A6BE0002E7CD /* Validator.swift in Sources */,
 				C952DCCB1D636D0A005D1750 /* ValueAnimation.swift in Sources */,

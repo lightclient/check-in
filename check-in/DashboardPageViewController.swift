@@ -10,37 +10,13 @@ import UIKit
 
 class DashboardPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    
-    var transition = ElasticTransition()
-    let lgr = UIScreenEdgePanGestureRecognizer()
-    let rgr = UIScreenEdgePanGestureRecognizer()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         dataSource = self
         
         delegate = self
-        
-        self.transitionStyle = .pageCurl
-        
-        // customization
-        transition.sticky = true
-        transition.showShadow = true
-        transition.panThreshold = 0.3
-        transition.transformType = .translateMid
-        
-        //    transition.overlayColor = UIColor(white: 0, alpha: 0.5)
-        //    transition.shadowColor = UIColor(white: 0, alpha: 0.5)
-        
-        // gesture recognizer
-        lgr.addTarget(self, action: #selector(self.handlePan(_:)))
-        rgr.addTarget(self, action: #selector(self.handleRightPan(_:)))
-        lgr.edges = .left
-        rgr.edges = .right
-        view.addGestureRecognizer(lgr)
-        view.addGestureRecognizer(rgr)
-        
+
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
@@ -55,30 +31,6 @@ class DashboardPageViewController: UIPageViewController, UIPageViewControllerDat
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
-    }
-    
-    func handlePan(_ pan:UIPanGestureRecognizer){
-        if pan.state == .began{
-            transition.edge = .left
-            transition.startInteractiveTransition(self, segueIdentifier: "membersSegue", gestureRecognizer: pan)
-        }else{
-            _ = transition.updateInteractiveTransition(gestureRecognizer: pan)
-        }
-    }
-    
-    func handleRightPan(_ pan:UIPanGestureRecognizer){
-        if pan.state == .began{
-            transition.edge = .right
-            transition.startInteractiveTransition(self, segueIdentifier: "eventsSegue", gestureRecognizer: pan)
-        }else{
-            _ = transition.updateInteractiveTransition(gestureRecognizer: pan)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destination
-        vc.transitioningDelegate = transition
-        vc.modalPresentationStyle = .custom
     }
     
     func pageViewController(_ viewControllerBeforepageViewController: UIPageViewController,
@@ -130,14 +82,16 @@ class DashboardPageViewController: UIPageViewController, UIPageViewControllerDat
     
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newViewController(type: "Events"),
+        return [self.newViewController(type: "events"),
                 self.newViewController(type: ""),
-                self.newViewController(type: "Members")]
+                self.newViewController(type: "members")]
     }()
     
     private func newViewController(type: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewController(withIdentifier: "\(type)DashboardViewController")
+        let vc = UIStoryboard(name: "Main", bundle: nil) .
+            instantiateViewController(withIdentifier: "DashboardViewController")
+        (vc as! DashboardViewController).type = type
+        return vc
     }
     
     /*

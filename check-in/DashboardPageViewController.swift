@@ -83,7 +83,6 @@ class DashboardPageViewController: UIPageViewController, UIPageViewControllerDat
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newViewController(type: "events"),
-                self.newViewController(type: ""),
                 self.newViewController(type: "members")]
     }()
     
@@ -92,6 +91,10 @@ class DashboardPageViewController: UIPageViewController, UIPageViewControllerDat
             instantiateViewController(withIdentifier: "DashboardViewController")
         (vc as! DashboardViewController).type = type
         return vc
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     /*

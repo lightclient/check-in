@@ -48,9 +48,6 @@ class EventViewController: UITableViewController, UITextFieldDelegate {
         titleField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         locationField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         
-        
-        
-        
         if let e = event {
             titleField.text = e.name
             locationField.text = e.location

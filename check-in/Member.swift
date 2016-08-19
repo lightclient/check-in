@@ -16,6 +16,7 @@ class Member : NSObject {
     private(set) var name: String?
     private(set) var email: String?
     private(set) var id : String?
+    private(set) var events: [String]
     private(set) var groupIdentifier: String?
     private(set) var metadata: KCSMetadata? //Kinvey metadata, optional
     
@@ -27,18 +28,25 @@ class Member : NSObject {
     func setName(n: String) { name = n }
     func setEmail(e: String) { email = e }
     func setId(i: String) { id = i }
+    func setEvents(e: [String]) { events = e }
     func setGroupIdentifier(g: String) { groupIdentifier = g }
     func setMetadata(m: KCSMetadata) { metadata = m }
-    func setAll(_entityId: String, _name: String, _email: String, _id: String, _groupIdentifer: String, _metadata: KCSMetadata) {
+    func setAll(_entityId: String, _name: String, _email: String, _id: String, _events: [String], _groupIdentifer: String, _metadata: KCSMetadata) {
         entityId = _entityId
         name = _name
         email = _email
         id = _id
+        events = _events
         groupIdentifier = _groupIdentifer
         metadata = _metadata
     }
     
     /* -------------------------------------------------------- */
+    
+    override init() {
+        events = []
+        super.init()
+    }
     
     func save(completion: () -> Void) {
         let collection = KCSCollection.init(from: "Members", of: Member.self)
@@ -96,12 +104,28 @@ class Member : NSObject {
 
     }
     
+    func addEvent(e: Event) -> Bool {
+        if (events.index(of: e.entityId!)) != nil {
+            return false
+        } else {
+            events.append(e.entityId!)
+            return true
+        }
+    }
+    
+    func removeEvent(entityId: String) {
+        if let i = events.index(of: entityId) {
+            events.remove(at: i)
+        }
+    }
+    
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]! {
         return [
             "entityId" : KCSEntityKeyId, //the required _id field
             "name" : "name",
             "email": "email",
             "id" : "id",
+            "events" : "events",
             "groupIdentifier" : "groupIdentifier",
             "metadata" : KCSEntityKeyMetadata //optional _metadata field
         ]

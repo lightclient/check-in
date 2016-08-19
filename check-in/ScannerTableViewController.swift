@@ -160,6 +160,7 @@ class ScannerTableViewController: UITableViewController, UITextFieldDelegate {
         member.setName(n: nameField.text!)
         member.setEmail(e: emailField.text!)
         member.setId(i: idField.text!)
+        member.addEvent(e: event)
         member.setGroupIdentifier(g: event.groupIdentifier!)
         
         // Save changes

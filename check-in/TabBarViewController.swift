@@ -15,7 +15,9 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().tintColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)
         // Do any additional setup after loading the view.
     }
 
@@ -24,7 +26,10 @@ class TabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     /*
     // MARK: - Navigation
 

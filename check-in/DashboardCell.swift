@@ -10,9 +10,10 @@ import UIKit
 
 class DashboardCell: UITableViewCell {
 
-    @IBOutlet weak var eventText: UILabel!
-    @IBOutlet weak var locationText: UILabel!
-    @IBOutlet weak var numberOfAttendeesLabel: UILabel!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var countType: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

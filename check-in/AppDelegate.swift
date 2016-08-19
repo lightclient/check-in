@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showLoginScreen()
         }
         
+        UIApplication.shared.statusBarStyle = .lightContent
         
         return true
     }
@@ -66,6 +67,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.window?.rootViewController = viewController
     }
-
 }
 

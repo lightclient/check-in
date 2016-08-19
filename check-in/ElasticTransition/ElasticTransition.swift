@@ -319,7 +319,7 @@ public class ElasticTransition: EdgePanTransition, UIGestureRecognizerDelegate{
       default:
         if foregroundExitStarted{
           foregroundStartingLocation = nil
-          endInteractiveTransition()
+          _ = endInteractiveTransition()
         }
       }
     }
@@ -331,7 +331,7 @@ public class ElasticTransition: EdgePanTransition, UIGestureRecognizerDelegate{
       case UIGestureRecognizerState.began:
         dissmissInteractiveTransition(vc, gestureRecognizer: pan, completion: nil)
       default:
-        updateInteractiveTransition(gestureRecognizer: pan)
+        _ = updateInteractiveTransition(gestureRecognizer: pan)
       }
     }
   }
@@ -343,10 +343,10 @@ public class ElasticTransition: EdgePanTransition, UIGestureRecognizerDelegate{
 
     cc = DynamicItem(center: CGPoint.zero)
     lc = DynamicItem(center: CGPoint.zero)
-    cc.m_addValueUpdateCallback("center") { [weak self] (values:CGPoint) in
+    _ = cc.m_addValueUpdateCallback("center") { [weak self] (values:CGPoint) in
       self?.needUpdate = true
     }
-    lc.m_addValueUpdateCallback("center") { [weak self] (values:CGPoint) in
+    _ = lc.m_addValueUpdateCallback("center") { [weak self] (values:CGPoint) in
       self?.needUpdate = true
     }
     animationObserverKey = MotionAnimator.sharedInstance.addUpdateObserver(self)
@@ -578,7 +578,7 @@ public class ElasticTransition: EdgePanTransition, UIGestureRecognizerDelegate{
               delegate.elasticTransitionDidDismiss?(self)
           }
       }
-      pushedControllers.popLast()
+      _ = pushedControllers.popLast()
       if let vc = pushedControllers.last , shouldAddGestureRecognizers {
         vc.view.addGestureRecognizer(foregroundExitPanGestureRecognizer)
       }

@@ -107,7 +107,7 @@ public class EdgePanTransition: NSObject, UIViewControllerAnimatedTransitioning,
   }
   func timedOut(){
     if currentPanGR == nil || currentPanGR!.state != .changed {
-      endInteractiveTransition()
+      _ = endInteractiveTransition()
     }
   }
   func startInteractivePresent(fromViewController fromVC:UIViewController, toViewController toVC:UIViewController?, identifier:String?, pan:UIPanGestureRecognizer, presenting:Bool, completion:(() -> Void)? = nil){

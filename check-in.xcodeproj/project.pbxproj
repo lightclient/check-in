@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A75A8ED69F6255A8535172F /* Pods_check_in.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE428BBEF5628CA19D76493D /* Pods_check_in.framework */; };
 		C904DEEF1D63E35F00BAF1F4 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */; };
+		C904DEF81D6764B500BAF1F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904DEF71D6764B500BAF1F4 /* User.swift */; };
 		C905001B1D5EA5360027DBAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905001A1D5EA5360027DBAE /* AppDelegate.swift */; };
 		C905001D1D5EA5360027DBAE /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905001C1D5EA5360027DBAE /* EventsViewController.swift */; };
 		C905001F1D5EA5360027DBAE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905001E1D5EA5360027DBAE /* SettingsViewController.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		8E70218A5AB2713E224215E1 /* Pods-check-in.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.release.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.release.xcconfig"; sourceTree = "<group>"; };
 		C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		C904DEF71D6764B500BAF1F4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C90500171D5EA5360027DBAE /* check-in.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "check-in.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C905001A1D5EA5360027DBAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C905001C1D5EA5360027DBAE /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,55 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C904DEF21D6751C000BAF1F4 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */,
+				C952DCCC1D636DF5005D1750 /* DashboardViewController.swift */,
+				C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		C904DEF31D6751CF00BAF1F4 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */,
+				C97D4D7C1D6005CC00204571 /* EventViewController.swift */,
+				C905001C1D5EA5360027DBAE /* EventsViewController.swift */,
+				C904DEF61D6762F400BAF1F4 /* Scanner */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		C904DEF41D6751E900BAF1F4 /* Login / Signup */ = {
+			isa = PBXGroup;
+			children = (
+				C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */,
+				C95401A01D5F673000F7AD65 /* SignupViewController.swift */,
+			);
+			name = "Login / Signup";
+			sourceTree = "<group>";
+		};
+		C904DEF51D67520600BAF1F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C936AD421D61807800602F5A /* Event.swift */,
+				C936AD431D61807800602F5A /* Member.swift */,
+				C904DEF71D6764B500BAF1F4 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C904DEF61D6762F400BAF1F4 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				C97D4D7E1D602AA000204571 /* ScannerViewController.swift */,
+				C97D4D841D603AB100204571 /* ScannerTableViewController.swift */,
+			);
+			name = Scanner;
+			sourceTree = "<group>";
+		};
 		C905000E1D5EA5360027DBAE = {
 			isa = PBXGroup;
 			children = (
@@ -127,22 +178,14 @@
 			isa = PBXGroup;
 			children = (
 				C952DCB01D636CF1005D1750 /* ElasticTransition */,
-				C936AD421D61807800602F5A /* Event.swift */,
-				C936AD431D61807800602F5A /* Member.swift */,
 				C905001A1D5EA5360027DBAE /* AppDelegate.swift */,
-				C91B0F9A1D5F8CAA00E80A46 /* AddEventViewController.swift */,
-				C97D4D7C1D6005CC00204571 /* EventViewController.swift */,
-				C905001C1D5EA5360027DBAE /* EventsViewController.swift */,
-				C904DEEE1D63E35F00BAF1F4 /* DashboardCell.swift */,
-				C952DCCC1D636DF5005D1750 /* DashboardViewController.swift */,
-				C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */,
-				C97D4D881D6159B600204571 /* DirectoryViewController.swift */,
-				C97D4D7E1D602AA000204571 /* ScannerViewController.swift */,
-				C97D4D841D603AB100204571 /* ScannerTableViewController.swift */,
-				C905001E1D5EA5360027DBAE /* SettingsViewController.swift */,
 				C952DCD01D637552005D1750 /* TabBarViewController.swift */,
-				C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */,
-				C95401A01D5F673000F7AD65 /* SignupViewController.swift */,
+				C904DEF51D67520600BAF1F4 /* Models */,
+				C904DEF41D6751E900BAF1F4 /* Login / Signup */,
+				C904DEF21D6751C000BAF1F4 /* Dashboard */,
+				C904DEF31D6751CF00BAF1F4 /* Events */,
+				C97D4D881D6159B600204571 /* DirectoryViewController.swift */,
+				C905001E1D5EA5360027DBAE /* SettingsViewController.swift */,
 				C949ED0F1D62A6BE0002E7CD /* Validator.swift */,
 				C90500201D5EA5360027DBAE /* Main.storyboard */,
 				C90500231D5EA5360027DBAE /* Assets.xcassets */,
@@ -319,6 +362,7 @@
 				C936AD441D61807800602F5A /* Event.swift in Sources */,
 				C952DCB91D636CFC005D1750 /* ElasticTransition.swift in Sources */,
 				C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */,
+				C904DEF81D6764B500BAF1F4 /* User.swift in Sources */,
 				C952DCD11D637552005D1750 /* TabBarViewController.swift in Sources */,
 				C952DCD71D63C01B005D1750 /* DashboardPageViewController.swift in Sources */,
 				C952DCC91D636D0A005D1750 /* SpringValueAnimation.swift in Sources */,

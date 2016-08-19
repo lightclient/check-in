@@ -55,11 +55,14 @@ class EventsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventsCell", for: indexPath) as UITableViewCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventsCell", for: indexPath)
         
         var event : Event
         event = events[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = event.name
+        cell.detailTextLabel?.text = "\(event.attendees.count) " + (event.attendees.count == 1 ? "attendee" : "attendees")
         
         return cell
     }

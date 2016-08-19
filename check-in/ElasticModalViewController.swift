@@ -83,7 +83,7 @@ public class ElasticModalViewController: UIViewController, ElasticMenuTransition
       modalTransition.edge = .right
       modalTransition.dissmissInteractiveTransition(self, gestureRecognizer: pan){}
     } else {
-      modalTransition.updateInteractiveTransition(gestureRecognizer: pan)
+      _ = modalTransition.updateInteractiveTransition(gestureRecognizer: pan)
     }
   }
   

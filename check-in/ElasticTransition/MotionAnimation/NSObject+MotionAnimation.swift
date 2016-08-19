@@ -53,7 +53,7 @@ public extension NSObject{
       return
     }
     m_propertyStates[key] = MotionAnimationPropertyState(values: initialValues.CGFloatValues)
-    getPropertyState(key).addValueUpdateCallback({ values in
+    _ = getPropertyState(key).addValueUpdateCallback({ values in
       valueUpdateCallback(T.fromCGFloatValues(values))
     })
   }
@@ -79,7 +79,7 @@ public extension NSObject{
     })
   }
   func m_removeCallback(_ key:String, observerKey:MotionAnimationObserverKey){
-    getPropertyState(key).removeCallback(observerKey)
+    _ = getPropertyState(key).removeCallback(observerKey)
   }
   
   func m_isAnimating(_ key:String) -> Bool{

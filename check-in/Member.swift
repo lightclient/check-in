@@ -87,6 +87,7 @@ class Member : NSObject {
                             self.name = m.name
                             self.email = m.email
                             self.id = m.id
+                            self.events = m.events
                             self.groupIdentifier = m.groupIdentifier
                             self.metadata = m.metadata
                             success = true

@@ -32,10 +32,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         view.backgroundColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)//getRandomColor()
         listView.dataSource = self
         listView.delegate = self
-        listView.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
+        listView.backgroundColor = .white //UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
         
         listView.refreshControl = self.refresh
-        refresh.tintColor = .white
+        refresh.tintColor = .black
         refresh.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
         
         refresh.beginRefreshingManually()
@@ -59,8 +59,15 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if let type = type {
-            countLabel.text = type == "events" ? "\(events.count)" : "\(members.count)"
-            countType.text = type == "events" ? "total events" : "total members"
+            
+            if type == "events" {
+                
+                countLabel.text = "\(events.count)"
+                countType.text = events.count == 1 ? "total event" : "total events"
+            } else if type == "members" {
+                countLabel.text = "\(members.count)"
+                countType.text = members.count == 1 ? "total member" : "total members"
+            }
             
             return type == "events" ? (events.count < 5 ? events.count : 5) : (members.count < 5 ? members.count : 5)
         }
@@ -87,7 +94,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         myLabel.frame = CGRect(x: 15, y: cell.frame.height / 2, width: 320, height: 20)
         myLabel.font = UIFont(name: "Futura-bold", size: 18)
         myLabel.text = self.tableView(listView, titleForHeaderInSection: section)
-        myLabel.textColor = .white
+        myLabel.textColor = .black
         let myView = UIView()
         myView.addSubview(myLabel)
         return myView
@@ -119,7 +126,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.subtitle.text = event.location
                 cell.countLabel.text = "\(event.attendees.count)"
                 cell.countType.text = event.attendees.count == 1 ? "attendee" : "attendees"
-                cell.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
+                //cell.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
             } else {
                 var index = indexPath.row
                 
@@ -132,7 +139,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.subtitle.text = member.email
                 cell.countLabel.text = "\(member.events.count)"
                 cell.countType.text = member.events.count == 1 ? "event" : "events"
-                cell.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
+                //cell.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
             }
         }
         

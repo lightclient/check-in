@@ -212,14 +212,19 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         
         if nameField.text != user.name { nameWheel.startAnimating() }
         if emailField.text != user.email { emailWheel.startAnimating() }
-        if passwordField.text == passwordField2.text { passwordWheel.startAnimating(); passwordWheel2.startAnimating() }
+        
         
         KCSUser.active().setValue(nameField.text, forKeyPath: "username")
         KCSUser.active().setValue(emailField.text, forKeyPath: "email")
         
-        if (passwordField.text == passwordField2.text) && passwordField.text != nil {
+        if (passwordField.text == passwordField2.text) && passwordField.text?.characters.count != 0 {
+            
+            passwordWheel.startAnimating()
+            passwordWheel2.startAnimating()
+            
             KCSUser.active().changePassword(passwordField.text, completionBlock: { (object, error) in
                 print("\(error)")
+                
                 self.passwordWheel.stopAnimating()
                 self.passwordWheel2.stopAnimating()
                 
@@ -255,7 +260,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         } else if emailField.text != user.email {
             saveButton.isEnabled = true
             return
-        } else if (passwordField.text == passwordField2.text) {
+        } else if (passwordField.text == passwordField2.text) && passwordField.text?.characters.count != 0 {
             saveButton.isEnabled = true
             return
         } else {

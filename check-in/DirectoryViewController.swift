@@ -67,9 +67,6 @@ class DirectoryViewController: UITableViewController {
             return cell
         }
         
-        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-        }
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 // Delete the row from the data source
@@ -108,18 +105,26 @@ class DirectoryViewController: UITableViewController {
                 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             }
         }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print ("\(members[indexPath.row].name)")
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MemberViewController") as! MemberViewController
+        vc.member = members[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
         override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
             
             // Get the new view controller using segue.destinationViewController.
             // Pass the selected object to the new view controller.
             
-            //if let selectedEventCell = sender as? UITableViewCell {
-                //let eventViewController = segue.destination as! EventViewController
-                //let indexPath = tableView.indexPath(for: selectedEventCell)!
-                //let selectedEvent = events[(indexPath.row)]
-                //eventViewController.event = selectedEvent
-            //}
+            if let selectedMemberCell = sender as? UITableViewCell {
+                let membertViewController = segue.destination as! MemberViewController
+                let indexPath = tableView.indexPath(for: selectedMemberCell)!
+                let selectedEvent = members[(indexPath.row)]
+                membertViewController.member = selectedEvent
+            }
         }
     
         func loadDataFromRefresh() {

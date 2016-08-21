@@ -42,6 +42,7 @@
 		C97D4D7F1D602AA000204571 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D7E1D602AA000204571 /* ScannerViewController.swift */; };
 		C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D841D603AB100204571 /* ScannerTableViewController.swift */; };
 		C97D4D891D6159B600204571 /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D881D6159B600204571 /* DirectoryViewController.swift */; };
+		C98B32221D68F26C00143BE5 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98B32211D68F26C00143BE5 /* MemberViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		C97D4D7E1D602AA000204571 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C97D4D841D603AB100204571 /* ScannerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerTableViewController.swift; sourceTree = "<group>"; };
 		C97D4D881D6159B600204571 /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
+		C98B32211D68F26C00143BE5 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		DA66A4E1E1E5DF35B7B7C87A /* Pods-check-in.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.debug.xcconfig"; sourceTree = "<group>"; };
 		EE428BBEF5628CA19D76493D /* Pods_check_in.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_check_in.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,7 +186,7 @@
 				C904DEF41D6751E900BAF1F4 /* Login / Signup */,
 				C904DEF21D6751C000BAF1F4 /* Dashboard */,
 				C904DEF31D6751CF00BAF1F4 /* Events */,
-				C97D4D881D6159B600204571 /* DirectoryViewController.swift */,
+				C98B321E1D68F22C00143BE5 /* Directory */,
 				C905001E1D5EA5360027DBAE /* SettingsViewController.swift */,
 				C949ED0F1D62A6BE0002E7CD /* Validator.swift */,
 				C90500201D5EA5360027DBAE /* Main.storyboard */,
@@ -222,6 +224,15 @@
 				C952DCC41D636D0A005D1750 /* ValueAnimation.swift */,
 			);
 			name = MotionAnimation;
+			sourceTree = "<group>";
+		};
+		C98B321E1D68F22C00143BE5 /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				C97D4D881D6159B600204571 /* DirectoryViewController.swift */,
+				C98B32211D68F26C00143BE5 /* MemberViewController.swift */,
+			);
+			name = Directory;
 			sourceTree = "<group>";
 		};
 		FDD3507CE03A4B4B8D33A1C4 /* Pods */ = {
@@ -370,6 +381,7 @@
 				C952DCC71D636D0A005D1750 /* MotionAnimator.swift in Sources */,
 				C952DCCD1D636DF5005D1750 /* DashboardViewController.swift in Sources */,
 				C904DEEF1D63E35F00BAF1F4 /* DashboardCell.swift in Sources */,
+				C98B32221D68F26C00143BE5 /* MemberViewController.swift in Sources */,
 				C952DCCA1D636D0A005D1750 /* Types.swift in Sources */,
 				C949ED101D62A6BE0002E7CD /* Validator.swift in Sources */,
 				C952DCCB1D636D0A005D1750 /* ValueAnimation.swift in Sources */,

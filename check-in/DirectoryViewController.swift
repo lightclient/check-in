@@ -21,90 +21,108 @@ extension UIRefreshControl {
 class DirectoryViewController: UITableViewController {
     
     var members = [Member]()
+    
+    var membersDictionary : [String:[Member]] = [:]
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map( { String($0) })
+    var sectionHeaders = NSMutableOrderedSet()
+    
     var event : Event?
     var refresh = UIRefreshControl()
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            self.navigationController?.navigationBar.barTintColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)
-            self.navigationController?.navigationBar.tintColor = .white
-            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-            
-            tableView.refreshControl = self.refresh
-            refresh.addTarget(self, action: #selector(loadDataFromRefresh), for: .valueChanged)
-            print("Directory loaded")
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        override func viewWillAppear(_ animated: Bool) {
-            if let event = event {
-                self.navigationItem.title = "\(event.name!) attendees"
-            } else {
-                self.navigationItem.title = "Directory"
-            }
-        }
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        tableView.refreshControl = self.refresh
+        refresh.addTarget(self, action: #selector(loadDataFromRefresh), for: .valueChanged)
+        print("Directory loaded")
+    }
     
-        override func viewDidAppear(_ animated: Bool) {
-            refresh.beginRefreshingManually()
+    override func viewWillAppear(_ animated: Bool) {
+        if let event = event {
+            self.navigationItem.title = "\(event.name!) attendees"
+        } else {
+            self.navigationItem.title = "Directory"
         }
-        
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
-        
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return members.count
-        }
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = UITableViewCell()//.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as UITableViewCell
-            
-            var member : Member
-            member = members[indexPath.row]
-            cell.textLabel?.text = member.name
-            
-            return cell
-        }
-        
-        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                // Delete the row from the data source
-                let collection = KCSCollection.init(from: "Members", of: Member.self)
-                let store = KCSAppdataStore(collection: collection, options: nil)
-                
-                let memberToDelete = members[indexPath.row]
-                members.remove(at: indexPath.row)
-                
-                if let event = event {
-                    event.removeAttendee(entityId: memberToDelete.entityId!)
-                    event.save {
-                        self.refresh.beginRefreshingManually()
-                    }
-                } else {
-                    _ = store?.remove(memberToDelete, withDeletionBlock: { (deletionDictorNil, error) in
-                        if error != nil {
-                            //error occurred - add back into the list
-                            self.members.insert(memberToDelete, at: indexPath.row)
-                            tableView.insertRows(
-                                at: [indexPath],
-                                with: UITableViewRowAnimation.automatic
-                            )
-                            //NSLog("Delete failed, with error: %@", error)
-                        } else {
-                            //delete successful - UI already updated
-                            //NSLog("deleted response: %@", deletionDictorNil)
-                        }
-                        }, withProgressBlock: nil)
-                }
+    }
 
-                
-                
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } else if editingStyle == .insert {
-                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    override func viewDidAppear(_ animated: Bool) {
+        refresh.beginRefreshingManually()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionHeaders.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionHeaders.object(at: section) as! String
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let letter = sectionHeaders.object(at: section)
+        let membersForLetter = membersDictionary[letter as! String]
+        return membersForLetter!.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()//.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as UITableViewCell
+        
+        
+        
+        let letter = sectionHeaders.object(at: indexPath.section)
+        let membersForLetter = membersDictionary[letter as! String]
+        let member = membersForLetter?[0]
+        
+        cell.textLabel?.text = member?.name
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            let collection = KCSCollection.init(from: "Members", of: Member.self)
+            let store = KCSAppdataStore(collection: collection, options: nil)
+            
+            let memberToDelete = members[indexPath.row]
+            members.remove(at: indexPath.row)
+            
+            if let event = event {
+                event.removeAttendee(entityId: memberToDelete.entityId!)
+                event.save {
+                    self.refresh.beginRefreshingManually()
+                }
+            } else {
+                _ = store?.remove(memberToDelete, withDeletionBlock: { (deletionDictorNil, error) in
+                    if error != nil {
+                        //error occurred - add back into the list
+                        self.members.insert(memberToDelete, at: indexPath.row)
+                        tableView.insertRows(
+                            at: [indexPath],
+                            with: UITableViewRowAnimation.automatic
+                        )
+                        //NSLog("Delete failed, with error: %@", error)
+                    } else {
+                        //delete successful - UI already updated
+                        //NSLog("deleted response: %@", deletionDictorNil)
+                    }
+                    }, withProgressBlock: nil)
             }
+
+            
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print ("\(members[indexPath.row].name)")
@@ -130,37 +148,56 @@ class DirectoryViewController: UITableViewController {
         func loadDataFromRefresh() {
             loadData(event: event)
         }
+    
+    func sortMembers() {
         
-        func loadData(event: Event?) {
+        sectionHeaders = []
         
-            let collection = KCSCollection.init(from: "Members", of: Member.self)
-            let store = KCSAppdataStore(collection: collection, options: nil)
+        for letter in alphabet {
             
-            if let event = event {
-                _ = store?.loadObject(withID: event.attendees, withCompletionBlock: { (members_list, error) in
+            let matches = members.filter({ ($0.name?.hasPrefix(letter))! })
+            if !matches.isEmpty {
+                membersDictionary[letter] = []
+                for word in matches {
+                    membersDictionary[letter]?.append(word)
+                    sectionHeaders.add(letter)
+                }
+            }
+        }
+    }
+        
+    func loadData(event: Event?) {
+    
+        let collection = KCSCollection.init(from: "Members", of: Member.self)
+        let store = KCSAppdataStore(collection: collection, options: nil)
+        
+        if let event = event {
+            _ = store?.loadObject(withID: event.attendees, withCompletionBlock: { (members_list, error) in
+                if let members_list = members_list {
+                    self.members = members_list as! [Member]
+                    self.sortMembers()
+                    self.tableView.reloadData()
+                }
+                
+                self.refresh.endRefreshing()
+                }, withProgressBlock: nil)
+        } else {
+            let query = KCSQuery(onField: "groupIdentifier", withExactMatchForValue: KCSUser.active().getValueForAttribute("groupIdentifier") as! String)
+            
+            _ = store?.query(withQuery:
+                query, withCompletionBlock: { (members_list, error) -> Void in
                     if let members_list = members_list {
                         self.members = members_list as! [Member]
+                        self.sortMembers()
                         self.tableView.reloadData()
                     }
                     
                     self.refresh.endRefreshing()
-                    }, withProgressBlock: nil)
-            } else {
-                let query = KCSQuery(onField: "groupIdentifier", withExactMatchForValue: KCSUser.active().getValueForAttribute("groupIdentifier") as! String)
-                
-                _ = store?.query(withQuery:
-                    query, withCompletionBlock: { (members_list, error) -> Void in
-                        if let members_list = members_list {
-                            self.members = members_list as! [Member]
-                            self.tableView.reloadData()
-                        }
-                        
-                        self.refresh.endRefreshing()
-                    },
-                           withProgressBlock: nil
-                )
+                },
+                       withProgressBlock: nil
+            )
 
-                
+            
         }
     
     }

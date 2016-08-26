@@ -20,6 +20,8 @@ extension UIRefreshControl {
 
 class DirectoryViewController: UITableViewController {
     
+    /* -------------------------------------------------------- */
+    
     var members = [Member]()
     
     var membersDictionary : [String:[Member]] = [:]
@@ -29,20 +31,26 @@ class DirectoryViewController: UITableViewController {
     
     var event : Event?
     var refresh = UIRefreshControl()
+    
+    /* -------------------------------------------------------- */
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Directory loaded")
         
+        // Configure navbar
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
+        // Configure activity wheel
         tableView.refreshControl = self.refresh
         refresh.addTarget(self, action: #selector(loadDataFromRefresh), for: .valueChanged)
-        print("Directory loaded")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Determine if this view is being used to show the directory of the attendees of a specific event
+        
         if let event = event {
             self.navigationItem.title = "\(event.name!) attendees"
         } else {
@@ -51,6 +59,7 @@ class DirectoryViewController: UITableViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        // TODO: find a better way to do this
         refresh.beginRefreshingManually()
     }
     

@@ -20,33 +20,31 @@ extension UIImage {
 
 class EventsViewController: UITableViewController {
 
+    /* -------------------------------------------------------- */
+    
     var events = [Event]()
-
     var refresh = UIRefreshControl()
+    
+    /* -------------------------------------------------------- */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         print("Events loaded")
 
+        // Configure the navbar
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
+        // Configure the activity wheel
         tableView.refreshControl = self.refresh
         refresh.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-
-    }
-
     override func viewDidAppear(_ animated: Bool) {
+        // Update the view whenever it has appeared
+        // TODO: find a better way to do this
         refresh.beginRefreshingManually()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,10 +83,9 @@ class EventsViewController: UITableViewController {
                         at: [indexPath],
                         with: UITableViewRowAnimation.automatic
                     )
-                    //NSLog("Delete failed, with error: %@", error)
+                    
                 } else {
                     //delete successful - UI already updated
-                    //NSLog("deleted response: %@", deletionDictorNil)
                 }
             }, withProgressBlock: nil)
         
@@ -108,6 +105,8 @@ class EventsViewController: UITableViewController {
             let eventViewController = segue.destination as! EventViewController
             let indexPath = tableView.indexPath(for: selectedEventCell)!
             let selectedEvent = events[(indexPath.row)]
+            
+            // Pass the selected event into the next view controller
             eventViewController.event = selectedEvent
         }
     }

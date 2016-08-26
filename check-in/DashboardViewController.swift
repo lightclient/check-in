@@ -10,6 +10,9 @@ import UIKit
 
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    
+    /* -------------------------------------------------------- */
+    
     var type : String?
     var events = [Event]()
     var members = [Member]()
@@ -20,63 +23,66 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var countType: UILabel!
     
-    func getRandomColor() -> UIColor{
-        let randomRed:CGFloat = CGFloat(drand48())
-        let randomGreen:CGFloat = CGFloat(drand48())
-        let randomBlue:CGFloat = CGFloat(drand48())
-        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
-    }
+    /* -------------------------------------------------------- */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)//getRandomColor()
+        
+        // Make the background blue
+        view.backgroundColor = UIColor(red:0.23, green:0.48, blue:0.84, alpha:1.0)
+        
+        // Set the UITableView delegates
         listView.dataSource = self
         listView.delegate = self
-        listView.backgroundColor = .white //UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
         
+        // Make tableview background white
+        listView.backgroundColor = .white
+        
+        // Setup activity wheel
         listView.refreshControl = self.refresh
         refresh.tintColor = .black
         refresh.addTarget(self, action: #selector(loadData), for: UIControlEvents.valueChanged)
         
+        // Start a refresh...eventually should figure out a better way
         refresh.beginRefreshingManually()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
     
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         if let type = type {
-            
+            // If we're in the events dashboard
             if type == "events" {
-                
+                // Set the related labels
                 countLabel.text = "\(events.count)"
                 countType.text = events.count == 1 ? "total event" : "total events"
+                
+            // If we're in the members dashboard
             } else if type == "members" {
+                // Set the related labels
                 countLabel.text = "\(members.count)"
                 countType.text = members.count == 1 ? "total member" : "total members"
             }
             
+            // Return the number of rows
+            // -- this is in case there are less than 5 members / events
+            // -- and we need to display less rows than our max of 5
             return type == "events" ? (events.count < 5 ? events.count : 5) : (members.count < 5 ? members.count : 5)
         }
         
+        // If we get here we have a problem
         return 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+        // Name the sections best or worst depeding on whether it is section 0 or 1
         if let type = type {
             if section == 0 {
                 return "Best " + (type == "events" ? "Events" : "Members")
@@ -85,9 +91,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
 
+        // ...
         return ""
     }
 
+    // Create a custom label for the section headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let myLabel = UILabel()
         let cell = DashboardCell()
@@ -101,15 +109,16 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // Magic number
         return 60
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // For some reason if you return 0 it goes back to the default
         return 0.001
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardCell", for: indexPath) as! DashboardCell
         
         if let type = type {
@@ -126,7 +135,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.subtitle.text = event.location
                 cell.countLabel.text = "\(event.attendees.count)"
                 cell.countType.text = event.attendees.count == 1 ? "attendee" : "attendees"
-                //cell.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
             } else {
                 var index = indexPath.row
                 
@@ -139,10 +147,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.subtitle.text = member.email
                 cell.countLabel.text = "\(member.events.count)"
                 cell.countType.text = member.events.count == 1 ? "event" : "events"
-                //cell.backgroundColor = UIColor(red:0.23, green:0.38, blue:0.45, alpha:1.0)
             }
         }
-        
         return cell
     }
 
@@ -158,12 +164,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 _ = store?.query(withQuery:
                     query, withCompletionBlock: { (events_list, error) -> Void in
                         if let events_list = events_list {
+                            // Sucessfully got events list
                             self.events = events_list as! [Event]
+                            
+                            // Sort the events array alphbetically
                             self.events.sort(by: { (a, b) -> Bool in
                                 return a.attendees.count > b.attendees.count
                             })
+                            
+                            // Reload with new data
                             self.listView.reloadData()
                         }
+                        
+                        // Done interacting w/ the interwebs...we can turn off the activity wheel
                         self.refresh.endRefreshing()
                     },
                            withProgressBlock: nil
@@ -177,12 +190,19 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 _ = store?.query(withQuery:
                     query, withCompletionBlock: { (members_list, error) -> Void in
                         if let members_list = members_list {
+                            // Sucessfully got events list
                             self.members = members_list as! [Member]
+                            
+                            // Sort the events array alphbetically
                             self.members.sort(by: { (a, b) -> Bool in
                                 return a.events.count > b.events.count
                             })
+                            
+                            // Reload with new data
                             self.listView.reloadData()
                         }
+                        
+                        // Done interacting w/ the interwebs...we can turn off the activity wheel
                         self.refresh.endRefreshing()
                     },
                            withProgressBlock: nil
@@ -247,8 +267,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
      // Pass the selected object to the new view controller.
      }
      */
-
-    
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return UIStatusBarStyle.lightContent }
 

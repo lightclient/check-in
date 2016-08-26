@@ -13,24 +13,17 @@ class DashboardPageViewController: UIPageViewController, UIPageViewControllerDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Set pageview delegates
         dataSource = self
-        
         delegate = self
 
+        // Set up the initial view controller
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
                                animated: true,
                                completion: nil)
         }
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        
     }
     
     func pageViewController(_ viewControllerBeforepageViewController: UIPageViewController,
@@ -75,11 +68,6 @@ class DashboardPageViewController: UIPageViewController, UIPageViewControllerDat
         
         return orderedViewControllers[nextIndex]
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newViewController(type: "events"),

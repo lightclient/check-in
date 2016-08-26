@@ -10,6 +10,9 @@ import Foundation
 
 class Event : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPersistable
     
+    
+    /* -------------------------------------------------------- */
+    
     private(set) var entityId: String? //Kinvey entity _id
     private(set) var name: String?
     private(set) var startDate: NSDate?
@@ -19,8 +22,7 @@ class Event : NSObject {    //all NSObjects in Kinvey implicitly implement KCSPe
     private(set) var groupIdentifier: String?
     private(set) var metadata: KCSMetadata? //Kinvey metadata, optional
     
-    // private var isEmpty = true
-    // private var isUpdated = false
+    /* -------------------------------------------------------- */
     
     override init() {
         attendees = []

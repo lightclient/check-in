@@ -10,6 +10,7 @@ import UIKit
 
 class DashboardCell: UITableViewCell {
 
+    // Outlets to control the cell
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var countLabel: UILabel!

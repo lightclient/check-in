@@ -10,6 +10,8 @@ import UIKit
 
 class AddEventViewController: UITableViewController, UITextFieldDelegate {
     
+    /* -------------------------------------------------------- */
+    
     let firstGroup = [ ("Title"), ("Location") ]
     let secondGroup = [ ("Starts"), ("startPicker"), ("Ends"), ("endPicker") ]
     let titleField = UITextField()
@@ -24,15 +26,7 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
     let TITLE_INDEX = 0
     let LOCATION_INDEX = 1
     
-    @IBAction func submitAddNewEvent(_ sender: AnyObject) {
-        addNewEvent(name: titleField.text!, startDate: startDatePicker.date, endDate: endDatePicker.date, location: locationField.text!, id: KCSUser.active().getValueForAttribute("groupIdentifier") as! String)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancelAddEvent(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    /* -------------------------------------------------------- */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,18 +87,6 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = UITableViewCell()
-    }*/
-    
-   /* func textFieldDidEndEditing(_ textField: UITextField) {
-        if(textField == titleField) {
-            self.tableView(tableView, cellForRowAt: IndexPath(index: TITLE_INDEX)).textLabel?.text = textField.text
-        } else if(textField == titleField) {
-            self.tableView(tableView, cellForRowAt: IndexPath(index: LOCATION_INDEX)).textLabel?.text = textField.text
-        }
-    }*/
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }
@@ -124,6 +106,18 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
         return 44
     }
     
+    // MARK: - Button Actions
+    
+    @IBAction func submitAddNewEvent(_ sender: AnyObject) {
+        addNewEvent(name: titleField.text!, startDate: startDatePicker.date, endDate: endDatePicker.date, location: locationField.text!, id: KCSUser.active().getValueForAttribute("groupIdentifier") as! String)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelAddEvent(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Make text field look pretty
     func setupTextFieldInsideCell(textField: UITextField, placeholder: String, cell: UITableViewCell) {
         textField.frame = cell.frame
         let padding = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(15), height: titleField.frame.size.height))
@@ -134,6 +128,7 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
         cell.addSubview(textField)
     }
     
+    // Update the label text when picker value changes
     func startDatePickerValueChanged() {
         
         let dateFormatter = DateFormatter()
@@ -145,6 +140,7 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
         tableView.cellForRow(at: startDateIndexPath)?.detailTextLabel?.text = strDate
     }
     
+    // Update the label text when picker value changes
     func endDatePickerValueChanged() {
         let dateFormatter = DateFormatter()
         
@@ -155,11 +151,12 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
         tableView.cellForRow(at: endDateIndexPath)?.detailTextLabel?.text = strDate
     }
     
+    // Save the event
     func addNewEvent(name: String, startDate: NSDate, endDate: NSDate, location: String, id: String) {
         let event = Event()
         event.setAll(_entityId: KCSEntityKeyId.dynamicType.init(), _name: name, _startDate: startDate, _endDate: endDate, _location: location, _attendees: [], _groupIdentifer: id, _metadata: KCSMetadata.init())
         event.save {
-            //
+            // Do something on save sucess
         }
     }
 

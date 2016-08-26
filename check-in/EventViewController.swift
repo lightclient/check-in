@@ -35,19 +35,24 @@ class EventViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure save button
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdits))
         self.navigationItem.rightBarButtonItem = saveButton
         saveButton.isEnabled = false
         
+        // Save return key type
         titleField.returnKeyType = .done
         locationField.returnKeyType = .done
         
+        // Set text field delegates
         titleField.delegate = self
         locationField.delegate = self
         
+        // Create targets to be called whenever the contents of the text field changes
         titleField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         locationField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
         
+        // Load fields w/ data from event passed, otherwise we'll create a new event
         if let e = event {
             titleField.text = e.name
             locationField.text = e.location
@@ -58,13 +63,18 @@ class EventViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func saveEdits() {
-        
+    
+        // Determine if the title / location has changed .. begin animating the activity wheel if they have
         if titleField.text != event?.name { titleWheel.startAnimating() }
         if locationField.text != event?.location { locationWheel.startAnimating() }
         
+        // Updaet event
         event?.setName(n: titleField.text!)
         event?.setLocation(l: locationField.text!)
+        
+        // Save event
         event?.save {
+            // Update UI w/ changes
             self.tableView.reloadData()
             self.navigationItem.title = self.event?.name
             self.titleWheel.stopAnimating()

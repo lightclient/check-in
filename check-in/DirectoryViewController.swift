@@ -25,6 +25,7 @@ class DirectoryViewController: UITableViewController {
     var membersDictionary : [String:[Member]] = [:]
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map( { String($0) })
     var sectionHeaders = NSMutableOrderedSet()
+    var rowCountInSectionHeaders = [Int]()
     
     var event : Event?
     var refresh = UIRefreshControl()
@@ -74,12 +75,10 @@ class DirectoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()//.dequeueReusableCell(withIdentifier: "MembersCell", for: indexPath) as UITableViewCell
-        
-        
-        
+    
         let letter = sectionHeaders.object(at: indexPath.section)
         let membersForLetter = membersDictionary[letter as! String]
-        let member = membersForLetter?[0]
+        let member = membersForLetter?[indexPath.row]
         
         cell.textLabel?.text = member?.name
         return cell
@@ -127,7 +126,16 @@ class DirectoryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print ("\(members[indexPath.row].name)")
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MemberViewController") as! MemberViewController
-        vc.member = members[indexPath.row]
+        
+        var index = 0
+        
+        for i in 0..<indexPath.section {
+            index += rowCountInSectionHeaders[i]
+        }
+        
+        index += indexPath.row
+        
+        vc.member = members[index]
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -151,13 +159,24 @@ class DirectoryViewController: UITableViewController {
     
     func sortMembers() {
         
+        members.sort { (a, b) -> Bool in
+            return a.name < b.name
+        }
+        
         sectionHeaders = []
+        rowCountInSectionHeaders = []
+        var section = 0
+        
+        
         
         for letter in alphabet {
+            
+            section += 1
             
             let matches = members.filter({ ($0.name?.hasPrefix(letter))! })
             if !matches.isEmpty {
                 membersDictionary[letter] = []
+                rowCountInSectionHeaders.append(matches.count)
                 for word in matches {
                     membersDictionary[letter]?.append(word)
                     sectionHeaders.add(letter)

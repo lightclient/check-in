@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "86CFF112B44E628D8729CE9412EFA9AC20A6F783",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D79FB765F6979CFE3491F6991E3DC9B3CE2C0C5F" : 9223372036854775807,
+    "86CFF112B44E628D8729CE9412EFA9AC20A6F783" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4521E25F-823A-446E-946B-90C4DB966E21",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D79FB765F6979CFE3491F6991E3DC9B3CE2C0C5F" : "",
+    "86CFF112B44E628D8729CE9412EFA9AC20A6F783" : "check-in\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "check-in",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "check-in.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/c-o-l-o-r\/check-in.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "86CFF112B44E628D8729CE9412EFA9AC20A6F783"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/uclaacm\/bruin-check-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D79FB765F6979CFE3491F6991E3DC9B3CE2C0C5F"
+    }
+  ]
+}

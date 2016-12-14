@@ -68,7 +68,7 @@ class Member : NSObject {
             withProgressBlock: nil)
     }
     
-    func loadFromID(id: String, groupID: String, completion: (success: Bool) -> Void) {
+    func loadFromID(id: String, groupID: String, completion: (_ success: Bool) -> Void) {
         
         let collection = KCSCollection.init(from: "Members", of: Member.self)
         let store = KCSAppdataStore(collection: collection, options: nil)

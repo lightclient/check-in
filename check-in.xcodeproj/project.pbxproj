@@ -43,6 +43,7 @@
 		C97D4D851D603AB100204571 /* ScannerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D841D603AB100204571 /* ScannerTableViewController.swift */; };
 		C97D4D891D6159B600204571 /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D4D881D6159B600204571 /* DirectoryViewController.swift */; };
 		C98B32221D68F26C00143BE5 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98B32211D68F26C00143BE5 /* MemberViewController.swift */; };
+		C995AE261DFC53C500904C6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C995AE251DFC53C500904C6A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,13 +79,13 @@
 		C952DCD01D637552005D1750 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C952DCD61D63C01B005D1750 /* DashboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardPageViewController.swift; sourceTree = "<group>"; };
 		C95401A01D5F673000F7AD65 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		C977D2FB1D5EBE2A000A7AE5 /* check-in-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "check-in-Bridging-Header.h"; sourceTree = "<group>"; };
 		C977D2FC1D5EC18B000A7AE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C97D4D7C1D6005CC00204571 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		C97D4D7E1D602AA000204571 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C97D4D841D603AB100204571 /* ScannerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerTableViewController.swift; sourceTree = "<group>"; };
 		C97D4D881D6159B600204571 /* DirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
 		C98B32211D68F26C00143BE5 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
+		C995AE251DFC53C500904C6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA66A4E1E1E5DF35B7B7C87A /* Pods-check-in.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-check-in.debug.xcconfig"; path = "Pods/Target Support Files/Pods-check-in/Pods-check-in.debug.xcconfig"; sourceTree = "<group>"; };
 		EE428BBEF5628CA19D76493D /* Pods_check_in.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_check_in.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -193,7 +194,7 @@
 				C90500231D5EA5360027DBAE /* Assets.xcassets */,
 				C90500251D5EA5360027DBAE /* LaunchScreen.storyboard */,
 				C90500281D5EA5360027DBAE /* Info.plist */,
-				C977D2FB1D5EBE2A000A7AE5 /* check-in-Bridging-Header.h */,
+				C995AE251DFC53C500904C6A /* GoogleService-Info.plist */,
 			);
 			path = "check-in";
 			sourceTree = "<group>";
@@ -309,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90500271D5EA5360027DBAE /* LaunchScreen.storyboard in Resources */,
+				C995AE261DFC53C500904C6A /* GoogleService-Info.plist in Resources */,
 				C90500241D5EA5360027DBAE /* Assets.xcassets in Resources */,
 				C90500221D5EA5360027DBAE /* Main.storyboard in Resources */,
 			);
@@ -471,6 +473,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -513,6 +516,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -529,7 +533,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattgarnett.check-in";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "check-in/check-in-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -544,7 +547,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattgarnett.check-in";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "check-in/check-in-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

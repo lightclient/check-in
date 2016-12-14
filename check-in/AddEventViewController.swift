@@ -109,7 +109,7 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - Button Actions
     
     @IBAction func submitAddNewEvent(_ sender: AnyObject) {
-        addNewEvent(name: titleField.text!, startDate: startDatePicker.date, endDate: endDatePicker.date, location: locationField.text!, id: KCSUser.active().getValueForAttribute("groupIdentifier") as! String)
+        //addNewEvent(name: titleField.text!, startDate: startDatePicker.date, endDate: endDatePicker.date, location: locationField.text!, id: KCSUser.active().getValueForAttribute("groupIdentifier") as! String)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -123,7 +123,7 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
         let padding = UIView(frame: CGRect(x: 0, y: 0, width: CGFloat(15), height: titleField.frame.size.height))
         textField.leftView = padding
         textField.leftViewMode = .always
-        textField.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleBody)
+        textField.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         textField.placeholder = placeholder
         cell.addSubview(textField)
     }
@@ -154,7 +154,7 @@ class AddEventViewController: UITableViewController, UITextFieldDelegate {
     // Save the event
     func addNewEvent(name: String, startDate: NSDate, endDate: NSDate, location: String, id: String) {
         let event = Event()
-        event.setAll(_entityId: KCSEntityKeyId.dynamicType.init(), _name: name, _startDate: startDate, _endDate: endDate, _location: location, _attendees: [], _groupIdentifer: id, _metadata: KCSMetadata.init())
+        //event.setAll(_entityId: type(of: KCSEntityKeyId).init(), _name: name, _startDate: startDate, _endDate: endDate, _location: location, _attendees: [], _groupIdentifer: id, _metadata: KCSMetadata.init())
         event.save {
             // Do something on save sucess
         }

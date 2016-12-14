@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControllerTransitioningDelegate {
     
@@ -83,6 +84,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControll
         usernameWheel.startAnimating()
         passwordWheel.startAnimating()
         
+        FIRAuth.auth()?.signIn(withEmail: usernameField.text!, password: passwordField.text!) { (user, error) in
+            if let error = error {
+               // There was an error with the login
+               print(error)
+            } else {
+                
+                // The log-in was successful and the user is now the active user and credentials saved
+                // Hide log-in view and show main app content
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+                tabBarController.modalPresentationStyle = .custom
+                self.transition.startingPoint = sender.center
+                tabBarController.transitioningDelegate = self.transition
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController?.present(tabBarController, animated: true, completion: nil)
+            }
+        }
+        
+        /*
         KCSUser.login(
             withUsername: usernameField.text!,
             password: passwordField.text!,
@@ -120,7 +140,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIViewControll
                     }
                 }
             }
-        )
+        )*/
     }
 
     // Make the textfield wiggle back and forth & become outlined in red

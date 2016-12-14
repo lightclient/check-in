@@ -6,5 +6,6 @@ target 'check-in' do
   use_frameworks!
 
   # Pods for check-in
-  pod 'KinveyKit'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 end

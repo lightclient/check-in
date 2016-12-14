@@ -17,8 +17,8 @@ public class MotionAnimation: NSObject {
   internal var animator:MotionAnimator?
 
   weak public var delegate:MotionAnimationDelegate?
-  public var onCompletion:((animation:MotionAnimation) -> Void)?
-  public var onUpdate:((animation:MotionAnimation) -> Void)?
+  public var onCompletion:((_ animation:MotionAnimation) -> Void)?
+  public var onUpdate:((_ animation:MotionAnimation) -> Void)?
   public var willStartPlaying:(()->Void)? = nil
 
   public var playing:Bool {

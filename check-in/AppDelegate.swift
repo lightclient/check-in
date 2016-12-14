@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        KCSClient.shared().initializeKinveyService(
+        /*KCSClient.shared().initializeKinveyService(
             forAppKey: "kid_B1JFVb3K",
             withAppSecret: "376d1adbedf84298937db0bd9922a487",
             usingOptions: nil
@@ -32,8 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if(KCSUser.active() == nil) {
             showLoginScreen()
-        }
+        }*/
         
+        FIRApp.configure()
         UIApplication.shared.statusBarStyle = .lightContent
         
         return true

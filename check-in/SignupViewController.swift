@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupViewController: ElasticModalViewController, UITextFieldDelegate {
     
@@ -131,6 +132,17 @@ class SignupViewController: ElasticModalViewController, UITextFieldDelegate {
         setActivityWheelsAnimating(state: true)
         
         // Attempt to create new user
+        
+        FIRAuth.auth()!.createUser(withEmail: emailField.text!,
+                                   password: passwordField.text!) { user, error in
+                                    if error == nil {
+                                        // 3
+                                        FIRAuth.auth()!.signIn(withEmail: self.emailField.text!,
+                                                               password: self.passwordField.text!)
+                                    }
+        }
+        
+        /*
         KCSUser.user(
             withUsername: usernameField.text!,
             password: passwordField.text!,
@@ -167,7 +179,7 @@ class SignupViewController: ElasticModalViewController, UITextFieldDelegate {
                 // Done access internet, stop animating wheels
                 self.setActivityWheelsAnimating(state: false)
             }
-        )
+        )*/
         
         
     }
